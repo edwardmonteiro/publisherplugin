@@ -1,0 +1,1 @@
+Os publish --org Itaú --default yes --target_stack all --target_language kotlin
