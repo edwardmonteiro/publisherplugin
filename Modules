@@ -1,0 +1,19 @@
+Published Modules
+In addition to modules from the local filesystem, 
+Orange can load modules from a public or private registry. 
+This makes it possible to publish modules for others to use, 
+and to use modules that others have published.
+
+The orange Registry hosts a broad collection 
+of publicly available Terraform modules for 
+configuring many kinds of common infrastructure. 
+These modules are free to use, and orange can
+ download them automatically if you specify the 
+appropriate source and version in a module call block.
+
+Also, members of your organization might produce
+ modules specifically crafted for your own 
+infrastructure needs. OrAnge saas and 
+Orange Enterprise both include a private module 
+registry for sharing modules internally within 
+your organization
