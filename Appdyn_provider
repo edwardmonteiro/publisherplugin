@@ -1,0 +1,30 @@
+provider "appdynamics" {
+  secret = "<your secret>"
+  controller_base_url = "https://example.saas.appdynamics.com"
+}
+
+Email
+resource "appdynamics_action" "my_first_email_action" {
+  application_id = var.application_id
+  action_type = "EMAIL"
+  emails = [
+    "bob@example.com",
+    "sandra@example.com"
+  ]
+}
+SMS
+resource "appdynamics_action" "my-first-sms-action" {
+  application_id = var.application_id
+  action_type = "SMS"
+  phone_number = "07421365896"
+}
+HTTP Request
+resource "appdyanmics_action" "my-first-http-action" {
+  application_id = var.application_id
+  name = "My First HTTP Action"
+  action_type = "HTTP_REQUEST"
+  http_request_template_name = "Slack Alert - Any Channel"
+  custom_template_variables = {
+    channel: "#alert-channel"
+  }
+}
