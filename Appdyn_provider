@@ -28,3 +28,26 @@ resource "appdyanmics_action" "my-first-http-action" {
     channel: "#alert-channel"
   }
 }
+
+
+Specific Health Rule
+resource "appdynamics_policy" "my_policy" {
+  name = "My Policy"
+  application_id = var.application_id
+  action_name = "my action"
+  action_type = appd_action.my-first-action.action_type
+  health_rule_event_types = [
+    "HEALTH_RULE_OPEN_WARNING",
+    "HEALTH_RULE_OPEN_CRITICAL"]
+  health_rule_scope_type = "SPECIFIC_HEALTH_RULES"
+  health_rules = ["my health rule"]
+}
+All Health Rules
+resource "appdynamics_policy" "all_health_rules_email_on_call" {
+  name = "All Health Rules Email On call"
+  application_id = var.application_id
+  action_name = join(", ",appd_action.on-call-email-action.emails)
+  action_type = appd_action.my-first-action.action_type
+  health_rule_event_types = ["HEALTH_RULE_OPEN_CRITICAL"]
+  health_rule_scope_type = "ALL_HEALTH_RULES"
+}
